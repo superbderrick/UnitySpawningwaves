@@ -1,7 +1,9 @@
 #UnityPratice
 
-## Object & Script : BasicClock
+# Unity Pratice
 
-#Transfrom : For Transform basic
-#Rigidbody : For Pysical properties
-#Collider :  For Collision
+### Object & Script : BasicClock
+
+### Transfrom : For Understanding Transform concept
+###  Rigidbody : For Understanding Physical effect 
+### Collider :  For Understanding property 
