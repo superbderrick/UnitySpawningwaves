@@ -1,6 +1,5 @@
-#UnityPratice
+#SimpleUnitySamples
 
-# Unity Pratice
 
 ### Object & Script : BasicClock
 
