@@ -1,8 +1,6 @@
-###SimpleUnitySamples
+#SimpleUnitySamples
 
-
-# Object & Script : BasicClock
-
-# Transfrom : For Understanding Transform concept
-# Rigidbody : For Understanding Physical effect 
-# Collider :  For Understanding property 
+## Object & Script : Made a simple clock
+## Transfrom :Transform concept sample
+## Rigidbody :Physical effect sample 
+## Collider  :Collider sample  
