@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
 
-public class Generator : MonoBehaviour
+public class WaveManager : MonoBehaviour
 {
     public GameObject hazard;
     public Vector3 spawnValues;
@@ -12,10 +12,13 @@ public class Generator : MonoBehaviour
     public float spawnWait;
     public float startWait;
     public float waveWait;
-    public int repetitionCycle;
+    public int repetitionCycleTime;
+	public int repetitionCycleCount;
+	public bool infiniteRepetition; 
+	
     private Timer mTimer;
+    private int repeatCount = 1;
     
-
     
     void Start ()
     {
@@ -24,25 +27,44 @@ public class Generator : MonoBehaviour
 
     private void SetupTimer()
     {
-        mTimer = new Timer(repetitionCycle);
+        mTimer = new Timer(repetitionCycleTime);
         mTimer.Play();
         
-        mTimer.OnTimerEnd += EndTimer;
+        mTimer.OnTimerEnd += EndedTimer;
         
     }
 
     private void Update()
     {
-        mTimer.Update(Time.deltaTime);
+        if(mTimer != null)
+            mTimer.Update(Time.deltaTime);
     }
 
     
-    void EndTimer()
+    void EndedTimer()
     {
-        Debug.Log("EndTimer" + mTimer.Time);
         
         StartCoroutine (SpawnWaves ());
-        mTimer.ResetPlay();
+
+        if (repeatCount < repetitionCycleCount)
+        {
+            mTimer.ResetPlay();
+            repeatCount++;    
+        }
+        else
+        {
+            FinishTimer();
+        }
+        
+    }
+
+    private void FinishTimer()
+    {
+        if (mTimer != null)
+        {
+            mTimer.Pause();
+            mTimer = null;
+        }
     }
 
     IEnumerator SpawnWaves ()
@@ -66,10 +88,6 @@ public class Generator : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (mTimer != null)
-        {
-            mTimer.Pause();
-            mTimer = null;
-        }
+        FinishTimer();
     }
 }

@@ -8,8 +8,8 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="GameLevel.cs" t="Include" />
-          <e p="Generator.cs" t="Include" />
           <e p="Timer.cs" t="Include" />
+          <e p="WaveManager.cs" t="Include" />
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />
