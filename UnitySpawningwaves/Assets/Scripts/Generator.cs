@@ -8,21 +8,27 @@ public class Generator : MonoBehaviour
     public GameObject hazard;
     public Vector3 spawnValues;
     public int hazardCount;
+    
     public float spawnWait;
     public float startWait;
     public float waveWait;
-
+    public int cycleCount;
+    
     private Timer mTimer;
+    
 
     void Start ()
     {
-        //StartCoroutine (SpawnWaves ());
-        
-        mTimer = new Timer(5);
-        mTimer.Play();
-        mTimer.OnTimerUpdate += UpdateTimer;
-        mTimer.OnTimerEnd += EndTimer;
+        SetupTimer();
+    }
 
+    private void SetupTimer()
+    {
+        mTimer = new Timer(cycleCount);
+        mTimer.Play();
+        
+        mTimer.OnTimerEnd += EndTimer;
+        
     }
 
     private void Update()
@@ -30,14 +36,13 @@ public class Generator : MonoBehaviour
         mTimer.Update(Time.deltaTime);
     }
 
-    void UpdateTimer()
-    {
-        
-    }
     
     void EndTimer()
     {
+        Debug.Log("EndTimer" + mTimer.Time);
         
+        StartCoroutine (SpawnWaves ());
+        mTimer.ResetPlay();
     }
 
     IEnumerator SpawnWaves ()
@@ -53,6 +58,15 @@ public class Generator : MonoBehaviour
                 yield return new WaitForSeconds (spawnWait);
             }
             yield return new WaitForSeconds (waveWait);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (mTimer != null)
+        {
+            mTimer.Pause();
+            mTimer = null;
         }
     }
 }

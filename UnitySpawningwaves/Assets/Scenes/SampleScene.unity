@@ -246,6 +246,7 @@ MonoBehaviour:
   spawnWait: 0.5
   startWait: 1
   waveWait: 1
+  cycleCount: 2
 --- !u!4 &750448162
 Transform:
   m_ObjectHideFlags: 0

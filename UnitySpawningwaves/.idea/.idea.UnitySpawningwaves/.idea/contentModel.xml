@@ -10,7 +10,6 @@
           <e p="GameLevel.cs" t="Include" />
           <e p="Generator.cs" t="Include" />
           <e p="Timer.cs" t="Include" />
-          <e p="TimerManager.cs" t="Include" />
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />

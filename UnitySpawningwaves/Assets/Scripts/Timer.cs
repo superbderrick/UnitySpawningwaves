@@ -14,7 +14,6 @@ namespace DefaultNamespace
 
 
 	public Timer (float endTime){
-	//	TimerManager.SetupTimer (this);
 		this.endTime = endTime;
 	}
 
