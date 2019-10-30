@@ -12,11 +12,11 @@ public class Generator : MonoBehaviour
     public float spawnWait;
     public float startWait;
     public float waveWait;
-    public int cycleCount;
-    
+    public int repetitionCycle;
     private Timer mTimer;
     
 
+    
     void Start ()
     {
         SetupTimer();
@@ -24,7 +24,7 @@ public class Generator : MonoBehaviour
 
     private void SetupTimer()
     {
-        mTimer = new Timer(cycleCount);
+        mTimer = new Timer(repetitionCycle);
         mTimer.Play();
         
         mTimer.OnTimerEnd += EndTimer;
@@ -57,7 +57,10 @@ public class Generator : MonoBehaviour
                 Instantiate (hazard, spawnPosition, spawnRotation);
                 yield return new WaitForSeconds (spawnWait);
             }
+            
             yield return new WaitForSeconds (waveWait);
+            
+            break;
         }
     }
 
